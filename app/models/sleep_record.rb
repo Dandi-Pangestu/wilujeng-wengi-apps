@@ -1,0 +1,10 @@
+class SleepRecord < ApplicationRecord
+  # Associations
+  belongs_to :user
+
+  # Validations
+  validates :user_id, presence: true
+  validates :go_to_bed_at, presence: true
+  validates :wake_up_at, presence: true
+  validates :duration, presence: true, numericality: { greater_than: 0 }
+end
