@@ -18,3 +18,26 @@ three:
   wake_up_at: <%= 1.day.ago + 6.hours %>
   duration: <%= 6.hours.to_i %>
   created_at: <%= 1.day.ago %>
+
+# Sleep records from previous week for friends functionality testing
+previous_week_user_two_short:
+  user: two
+  go_to_bed_at: <%= 1.week.ago.beginning_of_week + 22.hours %>
+  wake_up_at: <%= 1.week.ago.beginning_of_week + 28.hours %>
+  duration: <%= 6.hours.to_i %>
+  created_at: <%= 1.week.ago.beginning_of_week + 22.hours %>
+
+previous_week_user_two_long:
+  user: two
+  go_to_bed_at: <%= 1.week.ago.beginning_of_week + 46.hours %>
+  wake_up_at: <%= 1.week.ago.beginning_of_week + 55.hours %>
+  duration: <%= 9.hours.to_i %>
+  created_at: <%= 1.week.ago.beginning_of_week + 46.hours %>
+
+# Incomplete sleep record (should not appear in friends sleep records)
+incomplete_previous_week:
+  user: two
+  go_to_bed_at: <%= 1.week.ago.beginning_of_week + 70.hours %>
+  wake_up_at: 
+  duration: 
+  created_at: <%= 1.week.ago.beginning_of_week + 70.hours %>

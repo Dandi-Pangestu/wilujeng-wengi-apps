@@ -1,0 +1,6 @@
+# UserFollowing fixtures for testing friends sleep records functionality
+
+# User one follows user two
+one_follows_two:
+  follower: one
+  followed: two

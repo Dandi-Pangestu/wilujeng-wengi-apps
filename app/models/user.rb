@@ -37,6 +37,20 @@ class User < ApplicationRecord
     $redis.del(cache_key)
   end
 
+  # Cache following user IDs for performance
+  def following_user_ids_with_cache
+    cache_key = "user:#{id}:following_ids"
+    cached_ids = $redis.get(cache_key)
+
+    if cached_ids
+      JSON.parse(cached_ids)
+    else
+      ids = UserFollowing.where(follower_id: id).pluck(:followed_id)
+      $redis.setex(cache_key, 1800, ids.to_json) # Cache for 30 minutes
+      ids
+    end
+  end
+
   # Callbacks to maintain cache
   after_update :cache_user
   after_destroy :clear_cache
