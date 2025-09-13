@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # Sleep records routes
   get "users/:user_id/sleep_records", to: "sleep_records#index"
 
+  # Clock operations routes
+  post "users/:user_id/clock_in", to: "clock#clock_in"
+  patch "users/:user_id/clock_out", to: "clock#clock_out"
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

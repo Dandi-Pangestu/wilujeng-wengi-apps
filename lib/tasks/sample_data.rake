@@ -36,8 +36,8 @@ namespace :db do
       records_per_user.times do |i|
         break if sleep_records_data.length >= target_records
 
-        # Generate realistic sleep data
-        days_ago = rand(0..90) # Sleep records from last 90 days
+        # Generate realistic sleep data - START FROM 1 DAY AGO (not today)
+        days_ago = rand(1..90) # Sleep records from 1-90 days ago (excluding today)
         base_date = days_ago.days.ago
 
         # Random bedtime between 9 PM and 2 AM

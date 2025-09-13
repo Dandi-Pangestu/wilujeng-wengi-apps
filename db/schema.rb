@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_12_154246) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_13_000000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_12_154246) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_sleep_records_on_user_id_and_created_at"
     t.index ["user_id", "go_to_bed_at", "duration"], name: "index_sleep_records_on_user_id_and_go_to_bed_at_and_duration"
+    t.index ["user_id"], name: "index_sleep_records_on_user_id_where_active", where: "(wake_up_at IS NULL)"
   end
 
   create_table "user_followings", force: :cascade do |t|
