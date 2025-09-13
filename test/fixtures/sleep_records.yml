@@ -1,0 +1,20 @@
+one:
+  user: one
+  go_to_bed_at: <%= 3.days.ago %>
+  wake_up_at: <%= 3.days.ago + 8.hours %>
+  duration: <%= 8.hours.to_i %>
+  created_at: <%= 3.days.ago %>
+
+two:
+  user: one
+  go_to_bed_at: <%= 2.days.ago %>
+  wake_up_at: <%= 2.days.ago + 7.hours %>
+  duration: <%= 7.hours.to_i %>
+  created_at: <%= 2.days.ago %>
+
+three:
+  user: two
+  go_to_bed_at: <%= 1.day.ago %>
+  wake_up_at: <%= 1.day.ago + 6.hours %>
+  duration: <%= 6.hours.to_i %>
+  created_at: <%= 1.day.ago %>

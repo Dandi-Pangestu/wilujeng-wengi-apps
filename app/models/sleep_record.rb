@@ -7,4 +7,6 @@ class SleepRecord < ApplicationRecord
   validates :go_to_bed_at, presence: true
   validates :wake_up_at, presence: true
   validates :duration, presence: true, numericality: { greater_than: 0 }
+
+  scope :by_user, ->(user_id) { where(user_id: user_id) }
 end
