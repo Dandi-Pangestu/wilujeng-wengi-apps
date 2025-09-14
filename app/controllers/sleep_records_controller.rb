@@ -108,6 +108,33 @@ class SleepRecordsController < ApplicationController
     }
   end
 
+  def sleep_statistics
+    user = User.find_with_cache(params[:user_id])
+
+    if user.nil?
+      return render json: { error: "User not found" }, status: :not_found
+    end
+
+    # Define period (default to last 30 days)
+    period_days = params[:period_days]&.to_i || 30
+
+    cache_key = "user:#{user.id}:sleep_statistics:#{period_days}days"
+    cached_result = $redis.get(cache_key)
+
+    if cached_result
+      parsed_result = JSON.parse(cached_result)
+      return render json: parsed_result.merge("cached" => true)
+    end
+
+    # Calculate statistics using the model method
+    statistics = SleepRecord.calculate_statistics_for_user(user, period_days)
+
+    # Cache result for 1 hour (3600 seconds)
+    $redis.setex(cache_key, 3600, statistics.to_json)
+
+    render json: statistics.merge(cached: false)
+  end
+
   private
 
   def cursor_based_pagination(user, cursor, limit)

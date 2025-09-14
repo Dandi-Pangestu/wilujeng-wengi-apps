@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # Sleep records routes
   get "users/:user_id/sleep_records", to: "sleep_records#index"
   get "users/:user_id/friends_sleep_records", to: "sleep_records#friends_sleep_records"
+  get "users/:user_id/sleep_statistics", to: "sleep_records#sleep_statistics"
 
   # Clock operations routes
   post "users/:user_id/clock_in", to: "clock#clock_in"
