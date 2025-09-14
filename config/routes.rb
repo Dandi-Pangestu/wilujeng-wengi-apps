@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   post "users/:user_id/clock_in", to: "clock#clock_in"
   patch "users/:user_id/clock_out", to: "clock#clock_out"
 
+  # User following routes
+  post "users/:user_id/follow/:followed_user_id", to: "user_followings#follow"
+  delete "users/:user_id/unfollow/:followed_user_id", to: "user_followings#unfollow"
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
