@@ -1,4 +1,7 @@
 class SleepRecordsController < ApplicationController
+  # GET /users/:user_id/sleep_records
+  # Retrieve paginated sleep records for a specific user
+  # Supports both traditional pagination (?page=1&limit=10) and cursor pagination (?cursor=123&limit=10)
   def index
     # Cache user lookup in Redis for performance
     user = User.find_with_cache(params[:user_id])
@@ -21,6 +24,9 @@ class SleepRecordsController < ApplicationController
     end
   end
 
+  # GET /users/:user_id/friends_sleep_records
+  # Retrieve sleep records from friends (followed users) from the previous week
+  # Parameters: page (optional), limit (optional)
   def friends_sleep_records
     user = User.find_with_cache(params[:user_id])
 
@@ -108,6 +114,10 @@ class SleepRecordsController < ApplicationController
     }
   end
 
+  # GET /users/:user_id/sleep_statistics
+  # Get comprehensive sleep quality statistics for a user over a specified period
+  # Parameters: period_days (optional, default: 30)
+  # Results are cached in Redis for 1 hour
   def sleep_statistics
     user = User.find_with_cache(params[:user_id])
 

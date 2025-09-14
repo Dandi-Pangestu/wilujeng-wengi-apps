@@ -3,6 +3,7 @@ class UserFollowingsController < ApplicationController
   before_action :find_followed_user, only: [ :follow, :unfollow ]
 
   # POST /users/:user_id/follow/:followed_user_id
+  # Create a following relationship between two users
   def follow
     if @follower_user.id == @followed_user.id
       render json: { error: "You cannot follow yourself" }, status: :unprocessable_entity
@@ -33,6 +34,7 @@ class UserFollowingsController < ApplicationController
   end
 
   # DELETE /users/:user_id/unfollow/:followed_user_id
+  # Remove a following relationship between two users
   def unfollow
     user_following = UserFollowing.find_by(follower_id: @follower_user.id, followed_id: @followed_user.id)
 

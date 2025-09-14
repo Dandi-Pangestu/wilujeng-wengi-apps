@@ -1,4 +1,7 @@
 class ClockController < ApplicationController
+  # POST /users/:user_id/clock_in
+  # Start a new sleep session for a user
+  # Parameters: go_to_bed_at (optional, defaults to current time)
   def clock_in
     user = User.find_with_cache(params[:user_id])
 
@@ -74,6 +77,9 @@ class ClockController < ApplicationController
     end
   end
 
+  # PATCH /users/:user_id/clock_out
+  # End an active sleep session for a user
+  # Parameters: wake_up_at (optional, defaults to current time)
   def clock_out
     user = User.find_with_cache(params[:user_id])
 
