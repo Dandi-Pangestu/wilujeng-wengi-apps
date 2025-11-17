@@ -76,7 +76,7 @@ GEM
     base64 (0.3.0)
     benchmark (0.4.1)
     bigdecimal (3.2.3)
-    bootsnap (1.18.6)
+    bootsnap (1.19.0)
       msgpack (~> 1.2)
     brakeman (7.1.0)
       racc
@@ -97,8 +97,6 @@ GEM
     erb (4.0.4)
       cgi (>= 0.3.3)
     erubi (1.13.1)
-    faker (3.5.2)
-      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.7)
@@ -269,7 +267,6 @@ DEPENDENCIES
   brakeman
   debug
   dotenv-rails
-  faker
   kaminari
   pg (~> 1.1)
   puma (>= 5.0)
